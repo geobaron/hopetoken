@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeToken (YAMBA)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3b82f6;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        .donation-section {
+            background-color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .wallet-address {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            word-wrap: break-word;
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .lang-select {
+            float: right;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HopeToken (YAMBA)</h1>
+        <div class="lang-select">
+            <label for="language">Language:</label>
+            <select id="language">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="ar">Arabic</option>
+            </select>
+        </div>
+        <p>A nonprofit token dedicated to helping victims of war, disasters, famine, and poverty.</p>
+    </header>
+    <main>
+        <section class="donation-section">
+            <h2>Direct Donation (No Wallet Connect)</h2>
+            <p>You can donate directly to our official wallet using any crypto (USDT, BNB, ETH, etc.):</p>
+            <div class="wallet-address">0x8286823386bc1d10B2C0F9b73ECe5e0D154054ED</div>
+        </section>
+
+        <section class="donation-section">
+            <h2>Donate Using Wallet (MetaMask)</h2>
+            <p>Prefer to use MetaMask? Click the button below:</p>
+            <button onclick="connectWallet()">Connect Wallet</button>
+        </section>
+    </main>
+
+    <script>
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    alert('Wallet connected: ' + accounts[0]);
+                } catch (error) {
+                    console.error(error);
+                    alert('Wallet connection failed.');
+                }
+            } else {
+                alert('MetaMask is not installed.');
+            }
+        }
+    </script>
+</body>
+</html>
